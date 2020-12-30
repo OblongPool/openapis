@@ -1,0 +1,6 @@
+#templateDir: templates/spring
+inputSpec: openapi.yaml
+generatorName: oblp-spring
+outputDir: out
+additionalProperties:
+  artifactId: post-ipool
