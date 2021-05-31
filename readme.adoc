@@ -1,8 +1,14 @@
 = EaStack OpenAPI
 
-遵循 https://github.com/OAI/OpenAPI-Specification [OAS]
+All API OpenAPI definition.
+
+== Snippets
 
 [source, bash]
 ----
 openapi-generator generate -c configs/spring.yaml
 ----
+
+== References
+
+https://github.com/OAI/OpenAPI-Specification [OAS]

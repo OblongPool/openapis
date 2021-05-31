@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: EaStack OpenApi
+  description: EaStack OpenApi
+  version: 0.0.1
+  license:
+    name: MIT
+servers:
+  - url: 'https://api.eastack.xyz/v1'
+    description: Main (production) server
+  - url: 'https://staging-api.eastack.xyz/v1'
+    description: Internal staging server for testing
+
+
+paths:
+  /articles:
+    post:
+      summary: Create a new article
+      description: 'Create a new article, may not publish.'
+      operationId: createPost
+      requestBody:
+        $ref: '#/components/requestBodies/CreateArticle'
+      responses:
+        '200':
+          description: Article add successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+
+  /articles/{articleId}:
+    get:
+      summary: Get a article
+      description: Get a article, like title, content, status etc.
+      parameters:
+        - name: articleId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateArticle'
+    patch:
+      summary: Update a article
+      description: Update a article tags, title etc.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateArticle'
+
+    delete:
+      summary: Delete a article
+      description: Delete a article when is not published
+      operationId: deletePost
+      parameters:
+        - name: articleId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        204:
+          description: No Content
+
+
+components:
+  requestBodies:
+    CreateArticle:
+      required: true
+      description: For add article
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Article'
+
+  schemas:
+    CreateArticle:
+      required:
+        - title
+      properties:
+        title:
+          type: string
+          description: Article title
+          maxLength: 1024
+          minLength: 1
+          example: Hello World
+        content:
+          type: string
+
+    Article:
+      title: Article
+      description: Used for create new article
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 1
+        title:
+          type: string
+          description: Article title
+        content:
+          type: string
+        status:
+          type: string
+          description: Status for article
+          enum:
+            - created
+            - published
