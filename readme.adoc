@@ -1,6 +1,6 @@
-= iPool-API
+= EaStack OpenAPI
 
-API定义遵循 https://github.com/OAI/OpenAPI-Specification [OAS]
+遵循 https://github.com/OAI/OpenAPI-Specification [OAS]
 
 [source, bash]
 ----
