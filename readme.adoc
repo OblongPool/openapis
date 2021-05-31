@@ -11,4 +11,6 @@ openapi-generator generate -c configs/spring.yaml
 
 == References
 
-https://github.com/OAI/OpenAPI-Specification [OAS]
+https://github.com/OAI/OpenAPI-Specification[OAS]
+
+https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v3.0/petstore.yaml[Example]

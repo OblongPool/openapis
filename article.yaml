@@ -47,6 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateArticle'
+
     patch:
       summary: Update a article
       description: Update a article tags, title etc.
